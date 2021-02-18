@@ -25,12 +25,14 @@ pipeline {
             } 
         }
         stage('Build') {
-            kubernetesDeploy(
-                configs: 'kube-deployment/deployment.yml',
-                kubeconfigId: 'kube8s',
-                enableConfigSubstitution: true
-            )  
-        }
+            steps {
+                kubernetesDeploy(
+                    configs: 'kube-deployment/deployment.yml',
+                    kubeconfigId: 'kube8s',
+                    enableConfigSubstitution: true
+                )  
+            } 
 
+        }
     }
 }
