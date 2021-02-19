@@ -27,6 +27,8 @@ pipeline {
          stage('Build') {
             steps {
         sh '''
+                pwd
+                export export KUBECONFIG=/var/lib/jenkins/.kube/config
                 /usr/local/bin/kubectl apply -f kube-deployment/deployment.yml
            '''
             } 
