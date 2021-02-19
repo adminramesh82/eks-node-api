@@ -27,7 +27,7 @@ pipeline {
          stage('Build') {
             steps {
         sh '''
-                kubectl apply -f kube-deployment/deployment.yml
+                /usr/local/bin/kubectl apply -f kube-deployment/deployment.yml
            '''
             } 
 
