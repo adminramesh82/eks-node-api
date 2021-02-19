@@ -28,7 +28,8 @@ pipeline {
             steps {
         sh '''
                 pwd
-                KUBECONFIG=/var/lib/jenkins/.kube/config /usr/local/bin/kubectl get all
+                export kubeconfig=/var/lib/jenkins/.kube/config 
+                /usr/local/bin/kubectl get all
                 # /usr/local/bin/kubectl apply -f kube-deployment/deployment.yml
            '''
             } 
