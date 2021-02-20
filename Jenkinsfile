@@ -20,7 +20,7 @@ pipeline {
             steps {
                 sh '''
                     aws configure set region $REGION
-                    aws ecr get-login --region $REGION --no-include-email
+                    $(aws ecr get-login --region $REGION --no-include-email)
                     docker push $ECR_REPO:node
                     docker logout $ECR_REPO_URL
                     echo "completed"
