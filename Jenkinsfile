@@ -6,6 +6,8 @@ pipeline {
         REGION                = "us-east-1"
         ECR_REPO              = "456774515540.dkr.ecr.us-east-1.amazonaws.com/node"
         ECR_REPO_URL          = "456774515540.dkr.ecr.us-east-1.amazonaws.com"
+        EKS_CLUTER_NAME       = "demo"
+ 
     }      
     stages {
         stage('DOCKER IMAGE BUILD') {
@@ -30,9 +32,8 @@ pipeline {
          stage('Build') {
             steps {
                 sh '''
-                        aws eks --region us-east-1 update-kubeconfig --name demo
+                        aws eks --region $REGION update-kubeconfig --name $EKS_CLUTER_NAME
                         kubectl apply -f kube-deployment/deployment.yml
-                        # kubectl apply -f https://raw.githubusercontent.com/FourTimes/Kubernetes/master/03-service/3-loadbalancer.yml
                    '''
             } 
 
