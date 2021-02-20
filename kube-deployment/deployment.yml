@@ -42,4 +42,3 @@ spec:
     role: webserver
   ports:
     - port: 80
-      targetPort: 8080
