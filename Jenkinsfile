@@ -31,7 +31,8 @@ pipeline {
             steps {
                 sh '''
                         aws eks --region us-east-1 update-kubeconfig --name demo
-                        kubectl apply -f kube-deployment/deployment.yml
+                        # kubectl apply -f kube-deployment/deployment.yml
+                        kubectl apply -f https://raw.githubusercontent.com/FourTimes/Kubernetes/master/03-service/3-loadbalancer.yml
                    '''
             } 
 
