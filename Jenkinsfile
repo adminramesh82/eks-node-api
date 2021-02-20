@@ -3,10 +3,10 @@ pipeline {
      environment {
         AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
         AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
-        REGION                = "us-east-1"
-        ECR_REPO              = "456774515540.dkr.ecr.us-east-1.amazonaws.com/node"
-        ECR_REPO_URL          = "456774515540.dkr.ecr.us-east-1.amazonaws.com"
-        EKS_CLUTER_NAME       = "demo"
+        REGION                = "eu-central-1"
+        ECR_REPO              = "234934568007.dkr.ecr.eu-central-1.amazonaws.com/ecr_repo"
+        ECR_REPO_URL          = "234934568007.dkr.ecr.eu-central-1.amazonaws.com"
+        EKS_CLUTER_NAME       = "eks_cluster_tuto"
  
     }      
     stages {
@@ -33,7 +33,7 @@ pipeline {
             steps {
                 sh '''
                         aws eks --region $REGION update-kubeconfig --name $EKS_CLUTER_NAME
-                        kubectl apply -f kube-deployment/deployment.yml
+                        /usr/local/bin/kubectl apply -f kube-deployment/deployment.yml
                    '''
             } 
 
