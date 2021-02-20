@@ -19,8 +19,9 @@ pipeline {
         stage('DOCKER IMAGE PUSH') {
             steps {
                 sh '''
-                    aws configure set region $REGION
-                    aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 456774515540.dkr.ecr.us-east-1.amazonaws.com                    docker push $ECR_repo:node
+                    aws configure set region us-east-1
+                    aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 456774515540.dkr.ecr.us-east-1.amazonaws.com
+                    docker push $ECR_repo:node
                     echo "completed"
                 '''
             } 
