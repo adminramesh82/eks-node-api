@@ -4,12 +4,14 @@ pipeline {
         AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
         AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
         REGION                = 'ue-east-1'
+        ECR_repo = '456774515540.dkr.ecr.us-east-1.amazonaws.com/node'
+        ECR_REPO_URL = '456774515540.dkr.ecr.us-east-1.amazonaws.com'
     }      
     stages {
         stage('DOCKER IMAGE BUILD') {
             steps {
                 sh '''
-                    docker build -t 234934568007.dkr.ecr.ue-east-1.amazonaws.com/ecr_repo:node .
+                    docker build -t $ECR_repo:node .
                     echo "completed"
                 '''
             } 
@@ -18,8 +20,8 @@ pipeline {
             steps {
                 sh '''
                     aws configure set region $REGION
-                    # aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 234934568007.dkr.ecr.eu-central-1.amazonaws.com
-                    # docker push 234934568007.dkr.ecr.eu-central-1.amazonaws.com/ecr_repo:node
+                    aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin $ECR_REPO_URL
+                    docker push $ECR_repo:node
                     echo "completed"
                 '''
             } 
