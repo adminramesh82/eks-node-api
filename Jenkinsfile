@@ -1,12 +1,12 @@
 pipeline {
     agent any 
      environment {
-        AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
-        AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
-        REGION                = "eu-central-1"
-        ECR_REPO              = "234934568007.dkr.ecr.eu-central-1.amazonaws.com/ecr_repo"
-        ECR_REPO_URL          = "234934568007.dkr.ecr.eu-central-1.amazonaws.com"
-        EKS_CLUTER_NAME       = "eks_cluster_tuto"
+        AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-access-key')
+        AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-key-id')
+        REGION                = "us-east-1"
+        ECR_REPO              = "432006826559.dkr.ecr.us-east-1.amazonaws.com/ecr_repo"
+        ECR_REPO_URL          = "432006826559.dkr.ecr.us-east-1.amazonaws.com"
+        EKS_CLUTER_NAME       = "democlst"
  
     }      
     stages {
